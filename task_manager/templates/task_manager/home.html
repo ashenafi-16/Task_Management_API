@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Features Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        
+        .container {
+            max-width: 1200px; /* Increased max-width for wider layout */
+            margin: 20px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .feature {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #f9f9f9;
+            transition: background 0.3s;
+        }
+
+        .feature:hover {
+            background: #e3f2fd;
+        }
+
+        .feature h3 {
+            margin-top: 0;
+            cursor: pointer;
+        }
+
+        pre {
+            background: #e3f2fd;
+            padding: 10px;
+            border: 1px solid #90caf9;
+            border-radius: 5px;
+            overflow-x: auto;
+            display: none; /* Initially hide the code blocks */
+        }
+
+        code {
+            color: #d32f2f;
+        }
+
+        /* Navigation Menu */
+        nav {
+            background: #007bff;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#login">Login</a>
+        <a href="#logout">Logout</a>
+        <a href="#register">Register</a>
+        <a href="#password-reset">Password Reset</a>
+        <a href="#task-management">Task Management</a>
+        <a href="#categories">Categories</a>
+        <a href="#notifications">Notifications</a>
+        <a href="#activity-log">Activity Log</a>
+    </nav>
+
+    <div class="container">
+        <h1>Welcome to Task Management API</h1> 
+        <h2>Explore the Features Below</h2>
+
+        <!-- Login Feature -->
+        <div class="feature" id="login">
+            <h3>Login</h3>
+            <p><strong>Method:</strong> POST</p>
+            <p><strong>Endpoint:</strong> <code>/api/login/</code></p>
+            <p><strong>Description:</strong> Allows a user to log in and retrieve an authentication token.</p>
+            <p><strong>Input:</strong></p>
+            <pre>{
+    "username": "new_user",
+    "password": "your_password"
+}</pre>
+            <p><strong>Response:</strong></p>
+            <pre>{
+    "token": "1c334b044bcc09b992b0c1e81086aff26dcb7f39",
+    "login-message": "Login successful!"
+}</pre>
+        </div>
+
+        <!-- Logout Feature -->
+        <div class="feature" id="logout">
+            <h3>Logout</h3>
+            <p><strong>Method:</strong> POST</p>
+            <p><strong>Endpoint:</strong> <code>/api/logout/</code></p>
+            <p><strong>Description:</strong> Logs out the user by invalidating their token.</p>
+            <p><strong>Input:</strong></p>
+            <pre>{}</pre>
+            <p><strong>Response:</strong></p>
+            <pre>{
+    "logout-message": "Logout successful!"
+}</pre>
+        </div>
+
+
+        <!-- Register Feature -->
+        <div class="feature" id="register">
+            <h3>Register</h3>
+            <p><strong>Method:</strong> POST</p>
+            <p><strong>Endpoint:</strong> <code>/api/register/</code></p>
+            <p><strong>Description:</strong> Registers a new user.</p>
+            <p><strong>Input:</strong></p>
+            <pre>{
+    "username": "new_user",
+    "email": "new_user@example.com",
+    "password": "your_password"
+}</pre>
+            <p><strong>Response:</strong></p>
+            <pre>{
+    "message": "User  registered successfully!",
+    "username": "new_user",
+    "email": "new_user@example.com"
+}</pre>
+        </div>
+
+        <!-- Password Reset Feature -->
+        <div class="feature" id="password-reset">
+            <h3>Password Reset</h3>
+            <p><strong>Method:</strong> POST</p>
+            <p><strong>Endpoint:</strong> <code>/api/password_reset/</code></p>
+            <p><strong>Description:</strong> Sends a password reset link to the user's email.</p>
+            <p><strong>Input:</strong></p>
+            <pre>{
+    "email": "user@example.com"
+}</pre>
+            <p><strong>Response:</strong></p>
+            <pre>{
+    "message": "Password reset link sent to email!"
+}</pre>
+        </div>
+
+        <!-- Task Management Features -->
+        <div class="feature" id="task-management">
+            <h3>Task Management Features</h3>
+
+            <!-- Create Task -->
+            <div class="feature">
+                <h3>Create Task</h3>
+                <p><strong>Method:</strong> POST</p>
+                <p><strong>Endpoint:</strong> <code>/api/tasks/</code></p>
+                <p><strong>Description:</strong> Creates a new task.</p>
+                <p><strong>Input:</strong></p>
+                <pre>{
+    "title": "Complete project",
+    "description": "Work on the API development.",
+    "completed": false
+}</pre>
+                <p><strong>Response:</strong></p>
+                <pre>{
+    "id": 1,
+    "title": "Complete project",
+    "description": "Work on the API development.",
+    "completed": false,
+    "message": "Task created successfully!"
+}</pre>
+            </div>
+
+            <!-- List Tasks -->
+            <div class="feature">
+                <h3>List Tasks</h3>
+                <p><strong>Method:</strong> GET</p>
+                <p><strong>Endpoint:</strong> <code>/api/tasks/</code></p>
+                <p><strong>Description:</strong> Retrieves a list of all tasks.</p>
+                <p><strong>Response:</strong></p>
+                <pre>[
+    {
+        "id": 1,
+        "title": "Complete project",
+        "description": "Work on the API development.",
+        "completed": false
+    },
+    {
+        "id": 2,
+        "title": "Review code",
+        "description": "Check for bugs and optimize.",
+        "completed": true
+    }
+]</pre>
+            </div>
+
+            <!-- Retrieve Specific Task -->
+            <div class="feature">
+                <h3>Retrieve Task</h3>
+                <p><strong>Method:</strong> GET</p>
+                <p><strong>Endpoint:</strong> <code>/api/tasks/{id}/</code></p>
+                <p><strong>Description:</strong> Retrieves details of a specific task by ID.</p>
+                <p><strong>Response:</strong></p>
+                <pre>{
+    "id": 1,
+    "title": "Complete project",
+    "description": "Work on the API development.",
+    "completed": false
+}</pre>
+            </div>
+
+
+            <!-- Update Task -->
+            <div class="feature">
+                <h3>Update Task</h3>
+                <p><strong>Method:</strong> PUT</p>
+                <p><strong>Endpoint:</strong> <code>/api/tasks/{id}/</code></p>
+                <p><strong>Description:</strong> Updates a task with new details.</p>
+                <p><strong>Input:</strong></p>
+                <pre>{
+    "title": "Complete project v2",
+    "description": "Work on API and documentation.",
+    "completed": true
+}</pre>
+                <p><strong>Response:</strong></p>
+                <pre>{
+    "id": 1,
+    "title": "Complete project v2",
+    "description": "Work on API and documentation.",
+    "completed": true,
+    "message": "Task updated successfully!"
+}</pre>
+            </div>
+
+            <!-- Delete Task -->
+            <div class="feature">
+                <h3>Delete Task</h3>
+                <p><strong>Method:</strong> DELETE</p>
+                <p><strong>Endpoint:</strong> <code>/api/tasks/{id}/</code></p>
+                <p><strong>Description:</strong> Deletes a specific task by ID.</p>
+                <p><strong>Response:</strong></p>
+                <pre>{
+    "message": "Task deleted successfully!"
+}</pre>
+            </div>
+        </div>
+
+        <!-- Categories Features -->
+        <div class="feature" id="categories">
+            <h3>Categories Features</h3>
+
+            <!-- Create Category -->
+            <div class="feature">
+                <h3>Create Category</h3>
+                <p><strong>Method:</strong> POST</p>
+                <p><strong>Endpoint:</strong> <code>/api/categories/</code></p>
+                <p><strong>Description:</strong> Creates a new category.</p>
+                <p><strong>Input:</strong></p>
+                <pre>{
+    "name": "New Category"
+}</pre>
+                <p><strong>Response:</strong></p>
+                <pre>{
+    "id": 1,
+    "name": "New Category",
+    "message": "Category created successfully!"
+}</pre>
+            </div>
+
+            <!-- List Categories -->
+            <div class="feature">
+                <h3>List Categories</h3>
+                <p><strong>Method:</strong> GET</p>
+                <p><strong>Endpoint:</strong> <code>/api/categories/</code></p>
+                <p><strong>Description:</strong> Retrieves a list of all categories.</p>
+                <p><strong>Response:</strong></p>
+                <pre>[
+    {
+        "id": 1,
+        "name": "New Category"
+    },
+    {
+        "id": 2,
+        "name": "Existing Category"
+    }
+]</pre>
+            </div>
+
+            <!-- Retrieve Specific Category -->
+            <div class="feature">
+                <h3>Retrieve Category</h3>
+                <p><strong>Method:</strong> GET</p>
+                <p><strong>Endpoint:</strong> <code>/api/categories/{id}/</code></p>
+                <p><strong>Description:</strong> Retrieves details of a specific category by ID.</p>
+                <p><strong>Response:</strong></p>
+                <pre>{
+    "id": 1,
+    "name": "New Category"
+}</pre>
+            </div>
+
+            <!-- Update Category -->
+            <div class="feature">
+                <h3>Update Category</h3>
+                <p><strong>Method:</strong> PUT</p>
+                <p><strong>Endpoint:</strong> <code>/api/categories/{id}/</code></p>
+                <p><strong>Description:</strong> Updates a category with new details.</p>
+                <p><strong>Input:</strong></p>
+                <pre>{
+    "name": "Updated Category Name"
+}</pre>
+                <p><strong>Response:</strong></p>
+                <pre>{
+    "id": 1,
+    "name": "Updated Category Name",
+    "message": "Category updated successfully!"
+}</pre>
+            </div>
+
+
+            <!-- Delete Category -->
+            <div class="feature">
+                <h3>Delete Category</h3>
+                <p><strong>Method:</strong> DELETE</p>
+                <p><strong>Endpoint:</strong> <code>/api/categories/{id}/</code></p>
+                <p><strong>Description:</strong> Deletes a specific category by ID.</p>
+                <p><strong>Response:</strong></p>
+                <pre>{
+    "message": "Category deleted successfully!"
+}</pre>
+            </div>
+        </div>
+
+        <!-- Notifications Features -->
+        <div class="feature" id="notifications">
+            <h3>Notifications Features</h3>
+
+            <!-- Create Notification -->
+            <div class="feature">
+                <h3>Create Notification</h3>
+                <p><strong>Method:</strong> POST</p>
+                <p><strong>Endpoint:</strong> <code>/api/notifications/</code></p>
+                <p><strong>Description:</strong> Creates a new notification for a task or event.</p>
+                <p><strong>Input:</strong></p>
+                <pre>{
+    "task_id": 1,
+    "message": "Reminder: Task is due soon!"
+}</pre>
+                <p><strong>Response:</strong></p>
+                <pre>{
+    "id": 1,
+    "task_id": 1,
+    "message": "Reminder: Task is due soon!",
+    "date_created": "2025-01-17T15:00:00Z",
+    "message": "Notification created successfully!"
+}</pre>
+            </div>
+
+            <!-- List Notifications -->
+            <div class="feature">
+                <h3>List Notifications</h3>
+                <p><strong>Method:</strong> GET</p>
+                <p><strong>Endpoint:</strong> <code>/api/notifications/</code></p>
+                <p><strong>Description:</strong> Retrieves a list of all notifications.</p>
+                <p><strong>Response:</strong></p>
+                <pre>[
+    {
+        "id": 1,
+        "task_id": 1,
+        "message": "Reminder: Task is due soon!",
+        "date_created": "2025-01-17T15:00:00Z"
+    },
+    {
+        "id": 2,
+        "task_id": 2,
+        "message": "Task completed, good job!",
+        "date_created": "2025-01-16T14:30:00Z"
+    }
+]</pre>
+            </div>
+
+            <!-- Retrieve Specific Notification -->
+            <div class="feature">
+                <h3>Retrieve Notification</h3>
+                <p><strong>Method:</strong> GET</p>
+                <p><strong>Endpoint:</strong> <code>/api/notifications/{id}/</code></p>
+                <p><strong>Description:</strong> Retrieves details of a specific notification by ID.</p>
+                <p><strong>Response:</strong></p>
+                <pre>{
+    "id": 1,
+    "task_id": 1,
+    "message": "Reminder: Task is due soon!",
+    "date_created": "2025-01-17T15:00:00Z"
+}</pre>
+            </div>
+
+            <!-- Delete Notification -->
+            <div class="feature">
+                <h3>Delete Notification</h3>
+                <p><strong>Method:</strong> DELETE</p>
+                <p><strong>Endpoint:</strong> <code>/api/notifications/{id}/</code></p>
+                <p><strong>Description:</strong> Deletes a specific notification by ID.</p>
+                <p><strong>Response:</strong></p>
+                <pre>{
+    "message": "Notification deleted successfully!"
+}</pre>
+            </div>
+        </div>
+
+        <!-- Activity Log Features -->
+        <div class="feature" id="activity-log">
+            <h3>Activity Log Features</h3>
+
+            <!-- Create Task -->
+            <div class="feature">
+                <h3>Create Task</h3>
+                <p><strong>Method:</strong> POST</p>
+                <p><strong>Endpoint:</strong> <code>/api/create-task/</code></p>
+                <p><strong>Description:</strong> Creates a new task and logs the activity.</p>
+                <p><strong>Input:</strong></p>
+                <pre>{}</pre>  <!-- Task creation doesn't require input in this example -->
+                <p><strong>Response:</strong></p>
+                <pre>{
+    "message": "Task created successfully!",
+    "task_id": 123
+}</pre>
+            </div>
+
+
+            <!-- Get Activity Logs -->
+            <div class="feature">
+                <h3>Get Activity Logs</h3>
+                <p><strong>Method:</strong> GET</p>
+                <p><strong>Endpoint:</strong> <code>/api/logs/</code></p>
+                <p><strong>Description:</strong> Retrieves a list of activity logs.</p>
+                <p><strong>Response:</strong></p>
+                <pre>[
+    {
+        "action": "Created Task",
+        "user": "john_doe",
+        "timestamp": "2025-01-17T12:34:56Z",
+        "details": "Task ID: 123"
+    },
+    {
+        "action": "Updated Task",
+        "user": "jane_doe",
+        "timestamp": "2025-01-17T14:00:00Z",
+        "details": "Task ID: 124"
+    }
+]</pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle visibility of pre elements
+        document.querySelectorAll('.feature h3').forEach(header => {
+            header.addEventListener('click', () => {
+                const pre = header.nextElementSibling.nextElementSibling;
+                pre.style.display = pre.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
