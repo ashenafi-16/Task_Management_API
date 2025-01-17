@@ -1,7 +1,3 @@
-To make your README file more interactive and visually appealing, consider adding elements that enhance its readability and organization. Here’s an improved version, formatted with Markdown enhancements:
-
----
-
 # **Task Management API**
 
 ## **Overview**
