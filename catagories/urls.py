@@ -1,10 +1,10 @@
 from django.urls import path
 from .views import (
-    CategoryCreateView,
-    CategoryListView,
-    CategoryRetrieveView,
-    CategoryUpdateView,
-    CategoryDeleteView
+    CategoryCreateView,  # View to create a category
+    CategoryListView,    # View to list all categories
+    CategoryRetrieveView,  # View to retrieve a specific category
+    CategoryUpdateView,  # View to update a category
+    CategoryDeleteView   # View to delete a category
 )
 
 urlpatterns = [

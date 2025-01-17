@@ -14,15 +14,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path,include
+from django.contrib import admin  
+from django.urls import path, include  # Importing path and include to define URL routing
 
 urlpatterns = [
-    path('', include('user_account.urls')),
-    path('admin/', admin.site.urls),
-    path('api/', include('tasks.urls')),
-    path('api/', include('catagories.urls')),
-    path('api/', include('notifications.urls')),
-    path('api/', include('active_logs.urls')),
-    path('', include('task_manager.urls')),
+    path('', include('user_account.urls')),  # Include URLs from the user_account app for user-related views
+    path('admin/', admin.site.urls),  # URL for the Django admin site
+    path('api/', include('tasks.urls')),  # Include URLs from the tasks app for task-related API endpoints
+    path('api/', include('catagories.urls')),  # Include URLs from the categories app for category-related API endpoints
+    path('api/', include('notifications.urls')),  # Include URLs from the notifications app for notification-related API endpoints
+    path('api/', include('active_logs.urls')),  # Include URLs from the active_logs app for logging-related API endpoints
+    path('', include('task_manager.urls')),  # Include URLs from the task_manager app for general task management views
 ]
