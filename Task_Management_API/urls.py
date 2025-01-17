@@ -24,5 +24,5 @@ urlpatterns = [
     path('api/', include('catagories.urls')),
     path('api/', include('notifications.urls')),
     path('api/', include('active_logs.urls')),
-    path('/', include('task_manager.urls')),
+    path('', include('task_manager.urls')),
 ]
